@@ -21,29 +21,12 @@ namespace CrudWebApi.Controllers
         {
             return db.Employees;
         }
-
-        // GET: api/Employees/5
-        [ResponseType(typeof(Employee))]
-        public IHttpActionResult GetEmployee(int id)
-        {
-            Employee employee = db.Employees.Find(id);
-            if (employee == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(employee);
-        }
-
+               
         // PUT: api/Employees/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutEmployee(int id, Employee employee)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
+        
             if (id != employee.EmployeeId)
             {
                 return BadRequest();
@@ -73,12 +56,7 @@ namespace CrudWebApi.Controllers
         // POST: api/Employees
         [ResponseType(typeof(Employee))]
         public IHttpActionResult PostEmployee(Employee employee)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
+        {           
             db.Employees.Add(employee);
             db.SaveChanges();
 
